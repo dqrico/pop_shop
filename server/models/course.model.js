@@ -38,7 +38,7 @@ const CourseSchema = new mongoose.Schema({
         type: Boolean
     },
 
-    //ref connect user to course
+    //ref connects user to course
     createdBy:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

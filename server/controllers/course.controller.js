@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const Course = require('../models/course.model');
 const jwt = require("jsonwebtoken");
 
@@ -9,7 +8,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
     // CRUD functions use model to connect to Collection, then perform action on collection/documents
     // CREATE
-    createNewCourse: (req, res) =>{
+    createNewCourse: (req, res)=>{
 
         const newCourseObject = new Course(req.body);
 
@@ -17,7 +16,7 @@ module.exports = {
             complete: true
         })
 
-        newCourseObject.createBy = decodedJWT.payload.id;
+        newCourseObject.createdBy = decodedJWT.payload.id;
 
         newCourseObject.save()
             .then((newCourse)=>{

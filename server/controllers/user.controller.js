@@ -8,6 +8,8 @@ module.exports = {
 
     register: (req, res) => {
         
+        //req data + User model = create user object 
+
         const user = new User(req.body);
 
         user.save()
@@ -17,7 +19,7 @@ module.exports = {
                 res.json({
                     successMessage: "Thank you for registering!",
                     user: newUser
-                });
+                })
             })
             .catch((err)=>{
                 console.log("Register NOT successful!");
@@ -34,9 +36,10 @@ module.exports = {
                     res.status(400).json({message: "Invalid Login Attempt"})
                 }
                 else{
-                    //email is found:
+                    //if email is found:
                     bcrypt.compare(req.body.password, userRecord.password)
                         .then((isPasswordValid)=>{
+                            //Cookie = "usertoken"
                             if(isPasswordValid) {
                                 console.log("password is valid");
                                 res.cookie(
@@ -54,9 +57,8 @@ module.exports = {
                                             expires: new Date(Date.now() + 9000000)
                                         }
                                 ).json({
-                                    message: "Successfully",
-                                    userLoggedIn: userRecord.username,
-                                    // userId: userRecord._id
+                                    message: "Successfully Logged in",
+                                    userLoggedIn: userRecord.username
                                 });
                             }
                             else{
