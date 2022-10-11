@@ -36,6 +36,12 @@ const CourseSchema = new mongoose.Schema({
 
     is_webinar:{
         type: Boolean
+    },
+
+    //ref connect user to course
+    createdBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
     
 }, {timestamps: true})

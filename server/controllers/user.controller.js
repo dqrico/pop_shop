@@ -1,86 +1,103 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 
 module.exports = {
 
 
     register: (req, res) => {
-        console.log("in register");
-        console.log(req.body);
-
+        
         const user = new User(req.body);
 
-        User.findOne({email: user.email})
-            .then((uniqueEmailCheck)=>{
-                if(uniqueEmailCheck === null){
-                    user.save()
-                        .then((newUser)=>{
-                           console.log(newUser);
-                           console.log("Successfully registered");
-                           res.json({
-                                successMessage: "Thank you for registering!",
-                                user: newUser
-                           });
-                        })
-                        .catch((err)=>{
-                            console.log("Register NOT successful!");
-                            res.status(400).json(err);
-                        })
-                }
-                else{
-                    res.status(400).json({message: "Email already taken!"})
-                }
+        user.save()
+            .then((newUser)=>{
+                console.log(newUser);
+                console.log("Successfully registered");
+                res.json({
+                    successMessage: "Thank you for registering!",
+                    user: newUser
+                });
             })
-            .catch((err)=> {
+            .catch((err)=>{
+                console.log("Register NOT successful!");
                 res.status(400).json(err);
             })
     },
 
+
     login: (req, res)=>{
         User.findOne({email: req.body.email})
             .then((userRecord)=>{
+                //check if returned obj is null
                 if(userRecord === null){
                     res.status(400).json({message: "Invalid Login Attempt"})
                 }
                 else{
+                    //email is found:
                     bcrypt.compare(req.body.password, userRecord.password)
                         .then((isPasswordValid)=>{
                             if(isPasswordValid) {
                                 console.log("password is valid");
-                                res.json({message: "Successfully logged in!"})
+                                res.cookie(
+                                    "usertoken",
+                                    jwt.sign(
+                                        {
+                                           id: userRecord._id,
+                                           email: userRecord.email,
+                                           username: userRecord.username
+                                        },
+                                        process.env.JWT_SECRET
+                                    ),
+                                        {
+                                            httpOnly: true,
+                                            expires: new Date(Date.now() + 9000000)
+                                        }
+                                ).json({
+                                    message: "Successfully",
+                                    userLoggedIn: userRecord.username,
+                                    // userId: userRecord._id
+                                });
                             }
                             else{
-                                res.status(400).json({message: "Invalid Login and/or Email"})
+                                res.status(400).json({message: "Invalid Attempt"})
                             }
                         })
                         .catch((err)=>{
                             console.log(err);
-                            res.status(400).json({message: "Invalid Login and/or Email"})
+                            res.status(400).json({message: "Invalid Attempt"})
                         })
                 }
             })
             .catch((err)=>{
                 console.log(err);
-                res.status(400).json({message: "Invalid Login and/or Email"})
+                res.status(400).json({message: "Invalid Attempt"})
             })
     },
 
 
     logout: (req,res)=>{
         console.log("logging out");
-        res.json({message: "Succesffully logget out!"})
+        res.clearCookie("usertoken");
+        res.json({message: "Succesffully logged out!"})
     },
 
 
-    getOneUser: (req, res)=>{
-        User.findOne({_id: req.params.id})
-            .then((oneUser)=>{
-                res.json(oneUser)
+    getLoggedInUser: (req, res)=>{
+
+        const decodedJWT = jwt.decode(req.cookies.usertoken,{
+            complete: true
+        })
+
+        User.findOne({_id: decodedJWT.payload.id})
+            .then((user)=>{
+                console.log(user);
+                res.json(user)
             })
             .catch((err)=>{
                 console.log(err);
             })
     }
+
 
 }

@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.post("/api/users/logout", UserController.logout);
 
     //! CALLS WITH PARAMS - GO AFTER !
-    // param (:id) MUST MATCH as defined in controller 1:43:00
-    app.get("/api/users/:id", UserController.getOneUser);
+    // param (:id) MUST MATCH as defined in controller
+    app.get("/api/users/", UserController.getLoggedInUser);
     
 }

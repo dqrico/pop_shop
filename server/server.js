@@ -1,5 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 
@@ -16,6 +18,7 @@ app.use(cors({
     origin: "http://localhost:3000"
 }))
 
+app.use(cookieParser())
 
 require("./routes/course.routes")(app);
 require("./routes/user.routes")(app);
@@ -23,4 +26,4 @@ require("./routes/user.routes")(app);
 require("./config/mongoose.config");
 
 
-app.listen(8000, ()=> console.log("Locked and Loaded on port 8000"))
+app.listen(process.env.MY_PORT, ()=> console.log(`Locked and Loaded on ${process.env.MY_PORT}`))
