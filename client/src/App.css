@@ -63,8 +63,38 @@ td.action{
 
 div.details{
   border: 2px solid black;
-  width:90%;
+  width:86%;
   margin:30px;
   text-align: left;
   padding: 20px;
+}
+
+div.top-row{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+form.create{
+  text-align:left;
+  border: 2px solid black;
+  width: 90%;
+  margin:30px;
+  justify-content: space-evenly;
+  padding: 40px;
+}
+
+input.create{
+  display:flex;
+}
+
+select.create{
+  display: flex;
+}
+
+input.login{
+  display: flex;
+}
+input.register{
+  display: flex;
 }

@@ -66,7 +66,8 @@ const Register = (props) =>{
                         type="text"
                         name="username"
                         value={user.username}
-                        onChange={(e)=> handleChange(e)}    
+                        onChange={(e)=> handleChange(e)}
+                        className="register"  
                     />
                 </div>
                 <div>
@@ -79,6 +80,7 @@ const Register = (props) =>{
                         name="email"
                         value={user.email}
                         onChange={handleChange}
+                        className="register" 
                     />
                 </div>
                 <div>
@@ -93,6 +95,7 @@ const Register = (props) =>{
                         name="password"
                         value={user.password}
                         onChange={handleChange}
+                        className="register" 
                     />
                 </div>
                 <div>
@@ -107,6 +110,7 @@ const Register = (props) =>{
                         name="confirmPassword"
                         value={user.confirmPassword}
                         onChange={handleChange}
+                        className="register" 
                     />
                 </div>
                 <br/>

@@ -44,6 +44,7 @@ const Login = (props) => {
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        className="login"
                     />
                 </div>
                 <div>
@@ -53,11 +54,12 @@ const Login = (props) => {
                         name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className="login"
                     />
                 </div>
                 <br/>
                 <div className="center">
-                    <button>Sign In</button>
+                    <button>Login</button>
                 </div>
             </form>
         </div>
