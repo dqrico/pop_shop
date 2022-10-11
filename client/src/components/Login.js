@@ -42,6 +42,15 @@ const Login = (props) => {
                         type="text"
                         name="email"
                         value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
