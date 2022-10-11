@@ -25,19 +25,21 @@ const OneCourse = (props) => {
 
  // 2.RETURN
     return(
-        <div style={{textAlign:"center"}}>
+        <div>
             <header>
-                <h1>{course.course_name}</h1>
-                {/* <Link to={"/home"}>HOME</Link> */}
+                <h2>{course.course_name}</h2>
+                <Link to={"/home"}>HOME</Link>
             </header>
-
-            <h2>Details:</h2>
-            <p>{course.instructor}</p>
-            <p>{course.course_level}</p>
-            <p>{course.enroll_by}</p>
-            <p>{course.starts_at}</p>
-            <p>{course.enrolled_students}</p>
-
+            <div className="details">
+                <h3>Details:</h3>
+                <div className="details-2">
+                    <p>Instructor:  {course.instructor}</p>
+                    <p>Course Level: {course.course_level}</p>
+                    <p>Enroll By: {course.enroll_by}</p>
+                    <p>Starts Date: {course.starts_at}</p>
+                    <p>Enrolled Students: {course.enrolled_students}</p>
+                </div>
+            </div>
         </div>
     )
 }

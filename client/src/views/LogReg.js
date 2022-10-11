@@ -7,8 +7,15 @@ const LogReg = (props) => {
 
     return(
         <div>
-            <Login />
-            <Register />
+            <div>
+                <div className="Header">
+                    <h1>Welcome to Pop Shop LMS</h1>
+                </div>
+                <div className="logreg-forms">
+                    <Register />
+                    <Login />
+                </div>
+            </div>
         </div>
     )
 }

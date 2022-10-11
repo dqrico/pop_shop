@@ -32,12 +32,13 @@ const Login = (props) => {
 
     
     return(
-        <div>
-            <h1>Login</h1>
+        <div className="login-form">
+            
+            <h2>Login</h2>
             <p className="error-text">{errorMessage ? errorMessage : ""}</p>
             <form onSubmit={login}>
                 <div>
-                    <label>Email</label>
+                    <label>Email: </label>
                     <input
                         type="text"
                         name="email"
@@ -46,7 +47,7 @@ const Login = (props) => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label>Password: </label>
                     <input
                         type="password"
                         name="password"
@@ -54,6 +55,7 @@ const Login = (props) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
+                <br/>
                 <div className="center">
                     <button>Sign In</button>
                 </div>

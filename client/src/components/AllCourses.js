@@ -34,9 +34,10 @@ const AllCourses = (props) =>{
  // 2.RETURN
     return (
         <div>
+            <div className="all-container">
             <header>
                 <h1>Manage Courses</h1>
-                <Link to={"/new"}>New Course</Link>
+                <Link className="home" to={"/new"}>New Course</Link>
             </header>
 
             <table>
@@ -57,15 +58,15 @@ const AllCourses = (props) =>{
                                 <td>{course.instructor}</td>
                                 <td>{course.starts_at}</td>
                                 <td class="action">
-                                    <Link to={`/course/${course._id}`}>view </Link>
-                                    <p> </p>
-                                    <Link to={`/course/edit/${course._id}`}> edit</Link>
+                                    <Link to={`/course/${course._id}`}>View</Link>
+                                    <Link onClick={()=>deleteCourse(course._id)}>Delete</Link>
                                 </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
+            </div>
         </div>
     )
 

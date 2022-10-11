@@ -50,13 +50,13 @@ const Register = (props) =>{
 
 
     return (
-        <div>
+        <div className="register-form">
 
-            <h1>Register</h1>
+            <h2 className="form-header">Register</h2>
             {confirmReg ? <h4 style={{color: "green" }}>{confirmReg}</h4> : null}
             <form onSubmit={register}>
                 <div>
-                    <label>Username</label>
+                    <label>Username: </label>
                     {errors.username ? (
                         <span className="error-text">
                             {errors.username.message}
@@ -70,7 +70,7 @@ const Register = (props) =>{
                     />
                 </div>
                 <div>
-                    <label>Email</label>
+                    <label>Email: </label>
                     {errors.email ? (
                         <span className="error-text">{errors.email.message}</span>
                     ) : null}
@@ -82,7 +82,7 @@ const Register = (props) =>{
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label>Password: </label>
                     {errors.password ? (
                         <span className="error-text">
                             {errors.password.message}
@@ -96,7 +96,7 @@ const Register = (props) =>{
                     />
                 </div>
                 <div>
-                    <label>Confirm Password</label>
+                    <label>Confirm Password: </label>
                     {errors.confirmPassword ? (
                         <span className="error-text">
                             {errors.confirmPassword.message}
@@ -109,6 +109,7 @@ const Register = (props) =>{
                         onChange={handleChange}
                     />
                 </div>
+                <br/>
                 <div className="center">
                     <button>Register</button>
                 </div>
