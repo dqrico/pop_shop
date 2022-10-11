@@ -9,30 +9,20 @@ module.exports = {
     // CRUD functions use model to connect to Collection, then perform action on collection/documents
     // CREATE
     createNewCourse: (req, res)=>{
-
-        const newCourseObject = new Course(req.body);
-
-        const decodedJWT = jwt.decode(req.cookies.usertoken,{
-            complete: true
-        })
-
-        newCourseObject.createdBy = decodedJWT.payload.id;
-
-        newCourseObject.save()
+        Course.create(req.body)
             .then((newCourse)=>{
                 console.log(newCourse);
                 res.json(newCourse)
             })
             .catch((err)=>{
-                console.log("createNewCourse failed");
-                res.status(400).json(err);
+                console.log("Something went wrong in createNewCourse");
+                res.status(400).json(err)
             })
     },
     
     // READ
     findAllCourses: (req, res) => {
         Course.find()
-            .populate("createdBy", "username email")
             .then((allCourses)=>{
                 console.log(allCourses);
                 res.json(allCourses)
@@ -82,6 +72,6 @@ module.exports = {
                 console.log("DeleteCourse Failed");
                 res.json({message: "error with deleteOne", error: err})
             })
-    },
+    }
 
 }

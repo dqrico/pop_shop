@@ -84,7 +84,7 @@ const NewCourse = (props) => {
 
                 <div>
                     <label>Enrolled Students</label>
-                    <input valueasnumber={enrolled_students} onChange={(e)=>setEnrolled_students(e.target.valueAsNumber)} type="number" />
+                    <input value={enrolled_students} onChange={(e)=>setEnrolled_students(e.target.value)} type="number" />
                 </div>
 
                 <button>Add New</button>

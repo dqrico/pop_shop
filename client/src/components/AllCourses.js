@@ -37,7 +37,7 @@ const AllCourses = (props) =>{
             <div className="all-container">
             <header>
                 <h1>Manage Courses</h1>
-                <Link className="home" to={"/new"}>New Course</Link>
+                <Link to={"/new"}>New Course</Link>
             </header>
 
             <table>
