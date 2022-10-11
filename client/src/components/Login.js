@@ -17,10 +17,7 @@ const Login = (props) => {
                 {
                     email: email,
                     password: password,
-                },
-                {
-                    withCredentials: true,
-                },
+                }
             )
             .then((res) =>{
                 console.log(res, "res");

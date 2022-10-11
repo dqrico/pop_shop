@@ -28,10 +28,7 @@ const Register = (props) =>{
         e.preventDefault();
 
         axios.post("http://localhost:8000/api/users/register",
-            user,
-            {
-                withCredentials: true
-            })
+            user)
             .then((res)=>{
                 console.log(res.data);
                 setUser({
@@ -46,7 +43,7 @@ const Register = (props) =>{
                 setErrors({});
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err.response);
                 setErrors(err.response.data.errors);
             })
     }
