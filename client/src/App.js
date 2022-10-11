@@ -14,7 +14,7 @@ function App() {
     <div className="App">
         {/* ASSIGNS COMPONENT TO PATH */}
         <Routes>
-          <Route element={<LogReg/>} path="/" />
+          <Route element={<LogReg />} path="/" />
           <Route element={<AllCourses/>} path="/home" />
           <Route element={<NewCourse />} path="/new" />
           <Route element={<OneCourse />} path="/course/:id" />

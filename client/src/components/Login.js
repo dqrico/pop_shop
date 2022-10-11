@@ -11,30 +11,33 @@ const Login = (props) => {
 
     const login = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:8000/api/users/login",
-        {
-            email: email,
-            password: password
-        },
-        {
-            withCredentials: true
-        })
-        .then((res)=>{
-            console.log(res, "res");
-            console.log(res.data, "in res data");
-            navigate("/home");
-        })
-        .catch((err)=>{
-            console.log(err.response.data);
-            setErrorMessage(err.response.data.message);
-        });
+        axios
+            .post(
+                "http://localhost:8000/api/users/login",
+                {
+                    email: email,
+                    password: password,
+                },
+                {
+                    withCredentials: true,
+                },
+            )
+            .then((res) =>{
+                console.log(res, "res");
+                console.log(res.data, "in res data");
+                navigate("/home");
+            })
+            .catch((err)=>{
+                console.log(err.response.data);
+                setErrorMessage(err.response.data.message);
+            });
     };
 
     
     return(
         <div>
             <h1>Login</h1>
-            <p className='error-text'>{errorMessage ? errorMessage : ""}</p>
+            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
             <form onSubmit={login}>
                 <div>
                     <label>Email</label>
@@ -54,7 +57,7 @@ const Login = (props) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <div className='center'>
+                <div className="center">
                     <button>Sign In</button>
                 </div>
             </form>
@@ -63,4 +66,4 @@ const Login = (props) => {
 };
 
 
-export default Login
+export default Login;

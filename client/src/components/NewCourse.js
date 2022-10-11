@@ -31,7 +31,7 @@ const NewCourse = (props) => {
         .then((res)=>{
             console.log(res);
             console.log(res.data);
-            navigate("/");
+            navigate("/home");
         })
         .catch((err)=>{console.log(err)})
     }
@@ -42,7 +42,7 @@ const NewCourse = (props) => {
         <div>
             <header>
                 <h1>Create A Course</h1>
-                <Link to={"/"}>Dashboard</Link>
+                <Link to={"/home"}>Dashboard</Link>
             </header>
 
             <form onSubmit={submitHandler}>

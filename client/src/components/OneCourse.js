@@ -28,7 +28,7 @@ const OneCourse = (props) => {
         <div style={{textAlign:"center"}}>
             <header>
                 <h1>{course.course_name}</h1>
-                {/* <Link to={"/"}>HOME</Link> */}
+                {/* <Link to={"/home"}>HOME</Link> */}
             </header>
 
             <h2>Details:</h2>

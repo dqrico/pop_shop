@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 
@@ -14,13 +14,13 @@ const Register = (props) =>{
         username: "",
         email: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
     });
 
     const handleChange = (e) => {
         setUser({
             ...user,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     };
 
@@ -38,9 +38,11 @@ const Register = (props) =>{
                     username: "",
                     email: "",
                     password: "",
-                    confirmPassword: ""
+                    confirmPassword: "",
                 });
-                setConfirmReg("Thank you for Registering, you can login now");
+                setConfirmReg(
+                    "Thank you for Registering, you can login now",
+                );
                 setErrors({});
             })
             .catch((err) => {
@@ -50,20 +52,23 @@ const Register = (props) =>{
     }
 
 
-    return(
+    return (
         <div>
 
             <h1>Register</h1>
-            {confirmReg ? <h4 style={{color: "green"}}>{confirmReg}</h4> :null}
+            {confirmReg ? <h4 style={{color: "green" }}>{confirmReg}</h4> : null}
             <form onSubmit={register}>
                 <div>
                     <label>Username</label>
                     {errors.username ? (
-                        <span className="error-text">{errors.username.message}</span>
+                        <span className="error-text">
+                            {errors.username.message}
+                        </span>
                     ) : null}
                     <input
                         type="text"
                         name="username"
+                        value={user.username}
                         onChange={(e)=> handleChange(e)}    
                     />
                 </div>
@@ -82,7 +87,9 @@ const Register = (props) =>{
                 <div>
                     <label>Password</label>
                     {errors.password ? (
-                        <span className="error-text">{errors.password.message}</span>
+                        <span className="error-text">
+                            {errors.password.message}
+                        </span>
                     ) : null}
                     <input
                         type="password"
@@ -93,13 +100,15 @@ const Register = (props) =>{
                 </div>
                 <div>
                     <label>Confirm Password</label>
-                    {errors.confitmPassword ? (
-                        <span className="error-text">{errors.ConfirmPassword.message}</span>
+                    {errors.confirmPassword ? (
+                        <span className="error-text">
+                            {errors.confirmPassword.message}
+                        </span>
                     ) : null}
                     <input
                         type="password"
-                        name="ConfirmPassword"
-                        value={user.ConfirmPassword}
+                        name="confirmPassword"
+                        value={user.confirmPassword}
                         onChange={handleChange}
                     />
                 </div>
