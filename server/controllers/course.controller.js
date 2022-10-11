@@ -12,7 +12,7 @@ module.exports = {
 
         const newCourseObject = new Course(req.body);
 
-        const decodedJWT = jwt.decode(req.cookie.usertoken,{
+        const decodedJWT = jwt.decode(req.cookies.usertoken,{
             complete: true
         })
 
@@ -82,5 +82,6 @@ module.exports = {
                 console.log("DeleteCourse Failed");
                 res.json({message: "error with deleteOne", error: err})
             })
-    }
+    },
+
 }

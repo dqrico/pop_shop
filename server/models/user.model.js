@@ -31,7 +31,8 @@ UserSchema.pre("validate", function(next){
     console.log("inside: validate");
 
     if (this.password !== this.confirmPassword){
-        this.invalidate("confirmPassword", "Passwords must match");
+        this.invalidate("confirmPassword", "Passwords must match")
+        console.log("Passwords do not match!")
     }
     next()
 })

@@ -11,11 +11,15 @@ module.exports = {
         //req data + User model = create user object 
 
         const user = new User(req.body);
+        
+        //info inside instance of this object
+        //save = instance method
+        //create = static + takes object as parameter
 
         user.save()
             .then((newUser)=>{
                 console.log(newUser);
-                console.log("Successfully registered");
+                console.log("Successfully registered!");
                 res.json({
                     successMessage: "Thank you for registering!",
                     user: newUser
@@ -46,6 +50,7 @@ module.exports = {
                                     "usertoken",
                                     jwt.sign(
                                         {
+                                            //usertoken cookie payload:
                                            id: userRecord._id,
                                            email: userRecord.email,
                                            username: userRecord.username
