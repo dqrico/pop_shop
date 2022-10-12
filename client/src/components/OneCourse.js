@@ -39,6 +39,9 @@ const OneCourse = (props) => {
                     <p>Starts Date: {course.starts_at}</p>
                     <p>Enrolled Students: {course.enrolled_students}</p>
                 </div>
+                <div>
+                    <Link to={`/course/edit/${course._id}`}>EDIT</Link>
+                </div>
             </div>
         </div>
     )

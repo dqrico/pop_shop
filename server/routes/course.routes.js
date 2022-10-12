@@ -11,6 +11,7 @@ module.exports = (app) => {
     // param (:id) MUST MATCH as defined in controller 1:43:00
     app.get("/api/courses/:id", CourseController.findOneCourse);
     app.delete("/api/courses/:id", CourseController.deleteCourse);
+    app.put("/api/courses/:id", CourseController.updateCourse);
     
     
 }
