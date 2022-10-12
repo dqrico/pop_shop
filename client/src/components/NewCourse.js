@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const NewCourse = (props) => {
 
+    const navigate = useNavigate();
+
  // 1.FUNCTIONAL
     const [course_name, setCourse_name] = useState("");
     const [instructor,setInstructor] = useState("");
@@ -13,9 +15,7 @@ const NewCourse = (props) => {
     const [enroll_by, setEnroll_by] = useState("");
     const [starts_at, setStarts_at] = useState("");
     const [enrolled_students, setEnrolled_students] = useState(0);
-    const [is_webinar, setIs_webinar] = useState("");
-
-    const navigate = useNavigate();
+    const [is_webinar, setIs_webinar] = useState(false);
 
     const submitHandler = (e)=>{
         e.preventDefault();
