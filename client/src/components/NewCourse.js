@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { Link, useNavigate as navigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +14,8 @@ const NewCourse = (props) => {
     const [starts_at, setStarts_at] = useState("");
     const [enrolled_students, setEnrolled_students] = useState(0);
     const [is_webinar, setIs_webinar] = useState("");
+
+    const navigate = useNavigate();
 
     const submitHandler = (e)=>{
         e.preventDefault();
@@ -70,12 +72,12 @@ const NewCourse = (props) => {
 
                 <div>
                     <label>Enroll By: </label>
-                    <input value={enroll_by} onChange={(e)=>setEnroll_by(e.target.value)} type="text" className="create" />
+                    <input value={enroll_by} onChange={(e)=>setEnroll_by(e.target.value)} type="date" className="create" />
                 </div>
 
                 <div>
                     <label>Start Date: </label>
-                    <input value={starts_at} onChange={(e)=>setStarts_at(e.target.value)} type="text" className="create"/>
+                    <input value={starts_at} onChange={(e)=>setStarts_at(e.target.value)} type="date" className="create"/>
                 </div>
                 
                 <div>
